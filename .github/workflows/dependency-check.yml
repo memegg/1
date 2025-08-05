@@ -24,10 +24,11 @@ jobs:
         run: |
           wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
           unzip dependency-check-8.4.0-release.zip -d dependency-check
-
       - name: Run Dependency-Check
         run: |
+          chmod +x ./dependency-check/bin/dependency-check.sh
           ./dependency-check/bin/dependency-check.sh --scan . --format "HTML" --out dependency-report
+
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
